@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-
+//import 'package:flutter/material.dart';
+//import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+/*
 class MyPdfViewer extends StatefulWidget {
   const MyPdfViewer({Key? key}) : super(key: key);
 
@@ -16,7 +16,7 @@ class _MyPdfViewerState extends State<MyPdfViewer> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'arabic',
+          'Arabic',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
@@ -39,7 +39,7 @@ class _MyPdfViewerState extends State<MyPdfViewer> {
                 Text(
                   'ኣማርኛ ትርጉም',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.start,
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 10),
                 Text(
@@ -71,6 +71,7 @@ class _MyPdfViewerState extends State<MyPdfViewer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFAD9D4F),
       appBar: AppBar(
         centerTitle: true,
         title: const Text("ሪያዱ አስ ሳሊሂን ቅጽ 1"),
@@ -97,11 +98,104 @@ class _MyPdfViewerState extends State<MyPdfViewer> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue, // Color of the selected item
+        selectedItemColor: Color(0x56AD9D4F), // Color of the selected item
         unselectedItemColor: Colors.grey, // Color of unselected items
-        backgroundColor: Colors.white, // Background color of the BottomNavigationBar
+        backgroundColor: Color(0xFFAD9D4F), // Background color of the BottomNavigationBar
         onTap: _onItemTapped,
       ),
     );
   }
 }
+*/
+/*
+class Hadith {
+  final String text;
+  final String translation;
+
+  Hadith({required this.text, required this.translation});
+}
+List<Hadith> hadithList = [
+  Hadith(
+    text: 'Hadith 1 text',
+    translation: 'Hadith 1 translation',
+  )
+  // Add more Hadiths...
+];
+class HadithPage extends StatefulWidget {
+  final int index;
+
+  const HadithPage({Key? key, required this.index}) : super(key: key);
+
+  @override
+  State<HadithPage> createState() => _HadithPageState();
+}
+
+class _HadithPageState extends State<HadithPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Hadith ${widget.index + 1}'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              hadithList[widget.index].text,
+              style: TextStyle(fontSize: 18),
+            ),
+            SizedBox(height: 20),
+            Text(
+              hadithList[widget.index].translation,
+              style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+class HadithNavigator extends StatelessWidget {
+  final int currentIndex;
+
+  const HadithNavigator({Key? key, required this.currentIndex}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        if (currentIndex > 0)
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HadithPage(index: currentIndex - 1),
+                ),
+              );
+            },
+            child: Text('Previous'),
+          ),
+        ElevatedButton(
+          onPressed: () {
+            if (currentIndex < hadithList.length - 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HadithPage(index: currentIndex + 1),
+                ),
+              );
+            } else {
+              // Handle the case when it reaches the end of the list
+            }
+          },
+          child: Text('Next'),
+        ),
+      ],
+    );
+  }
+}
+*/
