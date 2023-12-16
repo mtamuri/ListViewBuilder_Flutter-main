@@ -20,8 +20,63 @@ class MyApp extends StatelessWidget {
   }
 }
 */
+/*import 'package:flutter/material.dart';
+import 'hadith_navigator.dart'; // Import your HadithNavigator widget
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Hadith Navigator',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Hadith Navigator Home'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Start exploring Hadiths!',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HadithNavigator(currentIndex: 0),
+                  ),
+                );
+              },
+              child: Text('Explore'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+*/ ////hypothesis for the json
 import 'package:flutter/material.dart';
 import 'Hadith/hadith_page.dart'; // Import the widget you want to start with
+import 'Hadith/favorite_hadiths.dart';
 
 void main() {
   runApp(MyApp());
