@@ -146,6 +146,7 @@ class _HadithPageState extends State<HadithPage> {
           ? Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+
           Text(
             hadithList[widget.index].hadith,
             style: TextStyle(fontSize: 18 ),
@@ -247,7 +248,7 @@ class _HadithPageState extends State<HadithPage> {
               if (index == 1) {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FavoritesPage()), // Navigate to the FavoritesPage
+                  MaterialPageRoute(builder: (context) => IndexPage()), // Navigate to the FavoritesPage
                 );
               } else if (index == 2) {
                 Navigator.push(

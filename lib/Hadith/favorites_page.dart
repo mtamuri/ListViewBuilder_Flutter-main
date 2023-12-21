@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FavoritesPage extends StatelessWidget {
@@ -18,4 +18,4 @@ class FavoritesPage extends StatelessWidget {
       ),
     );
   }
-}
+}*/
