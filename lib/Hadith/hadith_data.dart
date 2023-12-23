@@ -1564,8 +1564,11 @@ List<Hadith> hadithList = [
     translation: "Translation of Hadith 151",
   ),
   Hadith(
-    hadithNumber: 152,
-    hadith: '',
-    translation: "Translation of Hadith 152",
+    hadithNumber: 593,
+    hadith:
+        ' وعن الحَسَنِ بن عَليٍّ رضّيَ اللَّهُ عنهما ، قال : حَفِظْتُ مِنْ رَسُول اللَّهِ صَلّى االلهُ عَلَيْهِ وسَلَّم : «دَعْ ما '
+        ' يَرِيبُكَ إِلى مَا لا يرِيبُك » رواهُ الترمذي وقال حديث حسن صحيح. '
+        ' ومعناهُ : اتْرُكْ ما تَشُكُّ فِيهِ ، وخُذْ ما لا تَشُكَّ فِيهِ . ',
+    translation: "Translation of Hadith 593",
   ),
 ];
