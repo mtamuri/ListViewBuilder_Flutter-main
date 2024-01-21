@@ -1,117 +1,3 @@
-/*import 'package:flutter/material.dart';
-import 'hadith_data.dart';
-import 'hadith_model.dart';
-
-class HadithPage extends StatefulWidget {
-  final int index;
-
-  const HadithPage({Key? key, required this.index}) : super(key: key);
-
-  @override
-  _HadithPageState createState() => _HadithPageState();
-}
-
-class _HadithPageState extends State<HadithPage> {
-  int _selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Hadith ${widget.index + 1}'),
-      ),
-      body: FutureBuilder<List<Hadith>>(
-        future: loadHadithsFromJson(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error loading data'));
-          } else if (!snapshot.hasData || widget.index >= snapshot.data!.length) {
-            return Center(child: Text('No data available'));
-          } else {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  snapshot.data![widget.index].text,
-                  style: TextStyle(fontSize: 18),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  snapshot.data![widget.index].translation,
-                  style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
-                ),
-                Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    if (widget.index > 0)
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HadithPage(index: widget.index - 1),
-                            ),
-                          );
-                        },
-                        child: Text('Previous'),
-                      ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (widget.index < snapshot.data!.length - 1) {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HadithPage(index: widget.index + 1),
-                            ),
-                          );
-                        } else {
-                          // Handle end of list
-                        }
-                      },
-                      child: Text('Next'),
-                    ),
-                  ],
-                ),
-              ],
-            );
-          }
-        },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorites',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            label: 'Index',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-            // Handle navigation based on the selected index
-          });
-        },
-      ),
-    );
-  }
-}
-*/
-//comment of the json hypothesis
 // hadith_page.dart
 import 'package:flutter/material.dart';
 import 'hadith_model.dart';
@@ -169,10 +55,10 @@ class _HadithPageState extends State<HadithPage> {
                 isFavorite = !isFavorite;
                 if (isFavorite) {
                   // Add to favorites list
-                //  FavoriteHadiths().addFavorite(hadithList[widget.index]);
+                  //  FavoriteHadiths().addFavorite(hadithList[widget.index]);
                 } else {
                   // Remove from favorites list
-                //  FavoriteHadiths().removeFavorite(hadithList[widget.index]);
+                  //  FavoriteHadiths().removeFavorite(hadithList[widget.index]);
                 }
               });
             },
@@ -223,7 +109,7 @@ class _HadithPageState extends State<HadithPage> {
         ),
         child: BottomNavigationBar(
           currentIndex: _selectedIndex,
-        //  fixedColor: Colors.black, // Set selected item color here
+          //  fixedColor: Colors.black, // Set selected item color here
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
