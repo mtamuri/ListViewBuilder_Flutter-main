@@ -1,12 +1,9 @@
 // hadith_page.dart
 import 'package:flutter/material.dart';
-import 'hadith_model.dart';
 import 'hadith_data.dart';
-import 'hadith_navigator.dart';
-import 'favorites_page.dart';
-import 'favorite_hadiths.dart';
 import 'settings_page.dart';
 import 'index_page.dart';
+
 
 class HadithPage extends StatefulWidget {
   final int index;
@@ -16,56 +13,64 @@ class HadithPage extends StatefulWidget {
   @override
   _HadithPageState createState() => _HadithPageState();
 }
+
 class _HadithPageState extends State<HadithPage> {
-  //late List<Hadith> favoriteHadiths; // Store favorite hadiths
-  int _selectedIndex = 0;
+
   bool isFavorite = false; // Track favorite status
+
+
   @override
   Widget build(BuildContext context) {
+    bool isEndOfList = widget.index >= hadithList.length - 1;
+
     return Scaffold(
-      backgroundColor: Color(0xFFF5E6CA),
+      backgroundColor: const Color(0xFFF5E6CA),
       appBar: AppBar(
         title: Text('Hadith ${widget.index + 1}'),
-        backgroundColor: Color(0xFF8B5C3E),
+        backgroundColor: const Color(0xFF8B5C3E),
       ),
-      body: _selectedIndex == 0
-          ? Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Column(
         children: [
-
-          Text(
-            hadithList[widget.index].hadith,
-            style: TextStyle(fontSize: 18 ),
-            textAlign: TextAlign.right,
-          ),
-          SizedBox(height: 20),
-          Text(
-            hadithList[widget.index].translation,
-            style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
-            textAlign: TextAlign.left,
-          ),
-
-          IconButton(
-            icon: Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: isFavorite ? Colors.red : null,
+          Expanded(
+            child: ListView(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      hadithList[widget.index].hadith,
+                      style: const TextStyle(fontSize: 18),
+                      textAlign: TextAlign.right,
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      hadithList[widget.index].translation,
+                      style: const TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+                      textAlign: TextAlign.left,
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: isFavorite ? Colors.red : null,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isFavorite = !isFavorite;
+                          if (isFavorite) {
+                            // Add to favorites list
+                            // FavoriteHadith().addFavorite(hadithList[widget.index]);
+                          } else {
+                            // Remove from favorites list
+                            // FavoriteHadith().removeFavorite(hadithList[widget.index]);
+                          }
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
-            onPressed: () {
-              setState(() {
-                isFavorite = !isFavorite;
-                if (isFavorite) {
-                  // Add to favorites list
-                  //  FavoriteHadiths().addFavorite(hadithList[widget.index]);
-                } else {
-                  // Remove from favorites list
-                  //  FavoriteHadiths().removeFavorite(hadithList[widget.index]);
-                }
-              });
-            },
-
           ),
-
-          Spacer(), // Pushes the buttons to the bottom
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -79,37 +84,33 @@ class _HadithPageState extends State<HadithPage> {
                       ),
                     );
                   },
-                  child: Text('Previous'),
+                  child: const Icon(Icons.arrow_back),
                 ),
               ElevatedButton(
-                onPressed: () {
-                  if (widget.index < hadithList.length - 1) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HadithPage(index: widget.index + 1),
-                      ),
-                    );
-                  } else {
-                    // Handle the case when it reaches the end of the list
-                  }
+                onPressed: isEndOfList
+                    ? null  // Null onPressed disables the button
+                    : () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HadithPage(index: widget.index + 1),
+                    ),
+                  );
                 },
-                child: Text('Next'),
+                child: const Icon(Icons.arrow_forward),
               ),
             ],
           ),
         ],
-      )
-          : Container(),
-      bottomNavigationBar: Theme(
+      ),
+
+        bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-          canvasColor: Color(0xFF8B5C3E),
+          canvasColor: const Color(0xFF8B5C3E),
           primaryColor: Colors.black,
           unselectedWidgetColor: Colors.grey,
         ),
         child: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          //  fixedColor: Colors.black, // Set selected item color here
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -130,7 +131,7 @@ class _HadithPageState extends State<HadithPage> {
           ],
           onTap: (index) {
             setState(() {
-              _selectedIndex = index;
+
               if (index == 1) {
                 Navigator.push(
                   context,
@@ -149,7 +150,6 @@ class _HadithPageState extends State<HadithPage> {
               }
             });
           },
-
         ),
       ),
     );
