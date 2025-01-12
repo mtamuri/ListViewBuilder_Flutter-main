@@ -1,9 +1,10 @@
-// hadith_page.dart
 import 'package:flutter/material.dart';
-import 'hadith_data.dart';
+import '../Hadith/hadith_data.dart';
+import '../custom_bottom_bar.dart';
+import '../uitilities/navigation_utils.dart';
+import 'favorites_page.dart';
 import 'settings_page.dart';
 import 'index_page.dart';
-
 
 class HadithPage extends StatefulWidget {
   final int index;
@@ -15,9 +16,8 @@ class HadithPage extends StatefulWidget {
 }
 
 class _HadithPageState extends State<HadithPage> {
-
-  bool isFavorite = false; // Track favorite status
-
+  bool isFavorite = false;
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,8 @@ class _HadithPageState extends State<HadithPage> {
                     const SizedBox(height: 20),
                     Text(
                       hadithList[widget.index].translation,
-                      style: const TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
+                      style: const TextStyle(
+                          fontSize: 16, fontStyle: FontStyle.italic),
                       textAlign: TextAlign.left,
                     ),
                     IconButton(
@@ -80,7 +81,8 @@ class _HadithPageState extends State<HadithPage> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HadithPage(index: widget.index - 1),
+                        builder: (context) =>
+                            HadithPage(index: widget.index - 1),
                       ),
                     );
                   },
@@ -88,69 +90,30 @@ class _HadithPageState extends State<HadithPage> {
                 ),
               ElevatedButton(
                 onPressed: isEndOfList
-                    ? null  // Null onPressed disables the button
+                    ? null // Null onPressed disables the button
                     : () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HadithPage(index: widget.index + 1),
-                    ),
-                  );
-                },
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                HadithPage(index: widget.index + 1),
+                          ),
+                        );
+                      },
                 child: const Icon(Icons.arrow_forward),
               ),
             ],
           ),
         ],
       ),
-
-        bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          canvasColor: const Color(0xFF8B5C3E),
-          primaryColor: Colors.black,
-          unselectedWidgetColor: Colors.grey,
-        ),
-        child: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: 'Favorites',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.library_books),
-              label: 'Index',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
-            ),
-          ],
-          onTap: (index) {
-            setState(() {
-
-              if (index == 1) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => IndexPage()), // Navigate to the FavoritesPage
-                );
-              } else if (index == 2) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => IndexPage()), // Navigate to the IndexPage
-                );
-              } else if (index == 3) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SettingsPage()), // Navigate to the SettingsPage
-                );
-              }
-            });
-          },
-        ),
+      bottomNavigationBar: CustomBottomNavBar(
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+          onNavBarTap(context: context, index: index);
+        },
+        currentIndex: _currentIndex,
       ),
     );
   }

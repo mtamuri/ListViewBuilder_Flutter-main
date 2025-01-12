@@ -1,12 +1,13 @@
 // hadith_navigator.dart
 import 'package:flutter/material.dart';
-import 'hadith_page.dart';
+import '../screens/hadith_page.dart';
 import 'hadith_data.dart';
 
 class HadithNavigator extends StatelessWidget {
   final int currentIndex;
 
-  const HadithNavigator({Key? key, required this.currentIndex}) : super(key: key);
+  const HadithNavigator({Key? key, required this.currentIndex})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

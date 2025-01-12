@@ -1,2 +1,2 @@
 # riyad_2
- updated riyad project
+A full Riyadh As-Saliheen amharic translation Application Built for the ummah. In collaboration with Nejashi printing Press and the Translation of Hassen Taju. This App is built, tested and run by Ammar Mohammed Tofik.

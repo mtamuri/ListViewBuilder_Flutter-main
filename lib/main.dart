@@ -1,16 +1,17 @@
-//hypothesis for the json
 import 'package:flutter/material.dart';
-import 'Hadith/hadith_page.dart'; // Import the widget you want to start with
+import 'screens/hadith_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HadithPage(index: 0), // Start with HadithPage at index 0
+      home: HadithPage(index: 0),
     );
   }
 }
